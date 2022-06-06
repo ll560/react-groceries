@@ -1,0 +1,15 @@
+li{
+    list-style-type: none;
+}
+.top{
+    border: .5px solid black;
+    padding-bottom: 40px;
+    margin: 10px;
+   
+    display: block; 
+    background-color: #fff; 
+    border-radius: 5px;
+}
+.remove{
+    display: block;
+}
