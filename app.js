@@ -1,15 +1,42 @@
 console.log('Hello World')
+const productsList = [
 
+    {
+        "item": "beans",
+        "brand": "goya",
+        "units": 3,
+        "quantity": 4,
+        "isPurchased": true 
+
+    },
+
+    {
+        "item": "cornucopia",
+        "brand": "general farms",
+        "units": 4,
+        "quantity": 4,
+        "isPurchased": true
+
+    },
+
+    {
+        "item": "banana",
+        "brand": "general fruit",
+        "units": 4,
+        "quantity": 5,
+        "isPurchased": false
+
+    }]
 
 class App extends React.Component {
     
     state = {
-        products: [''],
+        products: productsList,
         item: '',
         brand: '',
         units:'',
         quantity: 0,
-        isPurchased: true
+        
     }
 
 handleChange = (event) => {
@@ -27,8 +54,8 @@ handleSubmit = (event) => {
         item: this.state.item,
         brand: this.state.brand,
         units: this.state.units,
-        quantity: this.state.quantity,
-
+        quantity: this.state.quantity
+        
     }
     console.log(newItem)
 
@@ -37,9 +64,15 @@ handleSubmit = (event) => {
         item: '',
         brand: '',
         units: '',
-        quantity: 0,
-        isPurchased: true
+        quantity: 0
+        
     })
+}
+
+handleDelete = (product, i) => {
+    console.log(i)
+    console.log(product)
+     
 }
 
 
@@ -51,7 +84,7 @@ render(){
             <form onSubmit={this.handleSubmit}>
                 <p>Submit items to the list:</p>
                 <label htmlFor="item">Item:</label>
-                <input type="text" id="item" value={this.state.item} onChange={this.handleChange} onClick={this.toogleHiring}/>
+                <input type="text" id="item" value={this.state.item} onChange={this.handleChange}/>
                 <label htmlFor="brand">Brand:</label>
                 <input type="text" id="brand" value={this.state.brand} onChange={this.handleChange}/>
                 <label htmlFor="units">Units:</label>
@@ -68,16 +101,26 @@ render(){
                 <h4>Brand: {this.state.brand}</h4>
                 <h4>Units: {this.state.units}</h4>
                 <h5>Quantity: {this.state.quantity}</h5>
+    
             </div>
 
             <div className="top">
             <h2>Grocery Items</h2>
-            {this.state.isPurchased ? <div><ul>
-                {this.state.products.map(product => 
-                    <li>{product.item} &emsp; {product.brand} &emsp; {product.units} &emsp; {product.quantity} </li>
-                
+            
+                {this.state.products.map((product, i) => {
+                    return(
+                    <React.Fragment>
+                    {product.isPurchased ? 
+                    <div><ul>
+                    <li>{product.item} &emsp; {product.brand} &emsp; {product.units}lbs &emsp; {product.quantity} {product.isPurchased}<button idx={i} onClick={() => this.handleDelete(product, i)}>Remove</button> </li>
+                     </ul> 
+                    </div> : "We did not buy any items yet"}
+                    </React.Fragment>
+                    )
+                   
+                }
                 )} 
-            </ul> </div> : "We did not buy any items yet"}
+            
             
 
             </div>
