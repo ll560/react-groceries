@@ -72,7 +72,10 @@ handleSubmit = (event) => {
 handleDelete = (product, i) => {
     console.log(i)
     console.log(product)
-     
+     const notPurshased = this.state.products.filter(product => product != this.state.products[i])
+     this.setState({
+         products: notPurshased
+     })
 }
 
 
