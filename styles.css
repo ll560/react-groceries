@@ -1,5 +1,6 @@
 li{
     list-style-type: none;
+    font-size: 1.5rem;
 }
 .top{
     border: .5px solid black;
@@ -12,4 +13,9 @@ li{
 }
 .remove{
     display: block;
+}
+
+.text{
+    font-size: 1.5rem;
+    padding-left: 36px;
 }

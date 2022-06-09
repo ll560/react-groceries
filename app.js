@@ -114,7 +114,7 @@ render(){
                     <div><ul>
                     <li>{product.item} &emsp; {product.brand} &emsp; {product.units}lbs &emsp; {product.quantity} {product.isPurchased}<button idx={i} onClick={() => this.handleDelete(product, i)}>Remove</button> </li>
                      </ul> 
-                    </div> : "We did not buy any items yet"}
+                    </div> : <div className="text"> We did not buy any items yet</div>}
                     </React.Fragment>
                     )
                    
